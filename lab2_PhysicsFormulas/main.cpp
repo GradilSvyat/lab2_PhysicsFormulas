@@ -6,13 +6,9 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "rus");
-
     int formula_selection;
-
     link: //возврат к этому месту при некорректном вводе или по завершении выполнения
-
     Start_print ();
-		
 	cin >> formula_selection;
 	//if (cin.fail()) cin.clear();
 		if (cin.fail()) //проверка на корректность ввода
@@ -22,16 +18,13 @@ int main()
 			cout << "Введите цыфру!!!" << endl << endl;
 			goto link;
 		}
-	
     switch (formula_selection)
     {
     case 1:
         cout << "Вы выбрали\"Давление на глубине жидкости\"" << endl;
 		link1: //возврат к этому месту при некорректном вводе плотности
         cout << "Введите плотность в килограммах на кубический метр" << endl;
-
         double p;
-
         cin >> p;
 		if (cin.fail()) //проверка на корректность ввода
 		{
@@ -42,9 +35,7 @@ int main()
 		}
 		link2: //возврат к этому месту при некорректном вводе высоты жидкости
         cout << "Введите высоту столба жидкости в метрах" << endl;
-
         double h;
-
         cin >> h;
 		if (cin.fail()) cin.clear();
         if (cin.fail()) //проверка на корректность ввода
@@ -61,9 +52,7 @@ int main()
         cout << "Вы выбрали\"Сила тяжести\"" << endl;
 		link3: //возврат к этому месту при некорректном вводе массы
         cout << "Введите массу в килограммах " << endl;
-
         double m;
-
         cin >> m;
             if (cin.fail()) //проверка на корректность ввода
 			{
@@ -73,7 +62,6 @@ int main()
 				goto link3;
 			}
         cout << "Сила тяжести = " << F(m) << " Н" << endl << endl;
-
         goto link; //возвращаемся к выбору формулы
 		break;
 	case 3:
