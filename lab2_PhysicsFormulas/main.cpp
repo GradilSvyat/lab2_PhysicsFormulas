@@ -9,42 +9,51 @@ int main()
 
     int formula_selection;
 
-    link: //возврат к этому месту при некорректном вводе
+    link: //возврат к этому месту при некорректном вводе или по завершении выполнения
 
     Start_print ();
-
-    cin >> formula_selection;
-
-    if (cin.fail()) //проверка на корректность ввода
-    {
-        cin.clear();
-        cin.ignore();
-    }
+		
+	cin >> formula_selection;
+	//if (cin.fail()) cin.clear();
+		if (cin.fail()) //проверка на корректность ввода
+		{
+			cin.clear();
+			cin.ignore();
+			cout << "Введите цыфру!!!" << endl << endl;
+			goto link;
+		}
+	
     switch (formula_selection)
     {
     case 1:
         cout << "Вы выбрали\"Давление на глубине жидкости\"" << endl;
-
+		link1: //возврат к этому месту при некорректном вводе плотности
         cout << "Введите плотность p в килограммах на кубический метр" << endl;
 
-        int p;
+        double p;
 
         cin >> p;
-            if (cin.fail()) //проверка на корректность ввода
-    {
+		if (cin.fail()) //проверка на корректность ввода
+		{
                 cin.clear();
                 cin.ignore();
-    }
+				cout << "Введите цыфру!!!" << endl << endl;
+				goto link1;
+		}
+		link2: //возврат к этому месту при некорректном вводе высоты жидкости
         cout << "Введите высоту столба жидкости h в метрах" << endl;
 
-        int h;
+        double h;
 
         cin >> h;
-            if (cin.fail()) //проверка на корректность ввода
-    {
+		if (cin.fail()) cin.clear();
+        if (cin.fail()) //проверка на корректность ввода
+		{
                 cin.clear();
                 cin.ignore();
-    }
+				cout << "Введите цыфру!!!" << endl << endl;
+				goto link2;
+		}
         cout << "Давление на глубине жидкости = " << P(p, h) << " Па" << endl << endl;
 
         goto link; //возвращаемся к выбору формулы
@@ -54,16 +63,19 @@ int main()
 
     case 2:
         cout << "Вы выбрали\"Сила тяжести\"" << endl;
+		link3: //возврат к этому месту при некорректном вводе массы
         cout << "Введите массу м в килограммах " << endl;
 
-        int m;
+        double m;
 
         cin >> m;
             if (cin.fail()) //проверка на корректность ввода
-    {
+			{
                 cin.clear();
                 cin.ignore();
-    }
+				cout << "Введите цыфру!!!" << endl << endl;
+				goto link3;
+			}
         cout << "Сила тяжести = " << F(m) << " Н" << endl << endl;
 
         goto link; //возвращаемся к выбору формулы
@@ -72,37 +84,45 @@ int main()
 
     case 3:
         cout << "Вы выбрали\"Ускорение\"" << endl;
-
+		link4: //возврат к этому месту при некорректном вводе первичной скорости
         cout << "Введите первичную скорость тела в метрах в секунду " << endl;
 
-        int v0;
+        double v0;
 
         cin >> v0;
             if (cin.fail()) //проверка на корректность ввода
-    {
+			{
                 cin.clear();
                 cin.ignore();
-    }
+				cout << "Введите цыфру!!!" << endl << endl;
+				goto link4;
+			}
+			link5: //возврат к этому месту при некорректном вводеконечной скорости
     cout << "Введите конечную скорость тела в метрах в секунду " << endl;
 
-        int v;
+        double v;
 
         cin >> v;
             if (cin.fail()) //проверка на корректность ввода
-    {
+			{
                 cin.clear();
                 cin.ignore();
-    }
+				cout << "Введите цыфру!!!" << endl << endl;
+				goto link;
+			}
+			link6: //возврат к этому месту при некорректном вводе времени
     cout << "Введите время в секундах" << endl;
 
-        int t;
+        double t;
 
         cin >> t;
             if (cin.fail()) //проверка на корректность ввода
-    {
+			{
                 cin.clear();
                 cin.ignore();
-    }
+				cout << "Введите цыфру!!!" << endl << endl;
+				goto link6;
+			}
         cout << "Ускорение = " << a(v0, v, t) << " м/с2" << endl << endl;
 
         goto link; //возвращаемся к выбору формулы
