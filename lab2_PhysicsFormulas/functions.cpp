@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 #include "functions.h"
 
 using namespace std;
@@ -29,5 +30,46 @@ double a(double v0, double v, double t) //Расчёт формулы ускорения
 }
 double Ek(double m1, double v1) //Расчёт формулы кинетической энергии тела
 {
-	return (m1*v1*v1)/2;
+	return (m1*v1*v1) / 2;
+}
+void inputValue(double &value, const string str)
+{
+	bool correct = false;
+	while (!correct)
+	{
+		cout << str << endl;
+		cin >> value;
+		if (cin.fail()) //проверка на корректность ввода
+		{
+			cin.clear();
+			cin.ignore(255, '\n');
+			cout << "Введите цыфру!!!" << endl << endl;
+			correct = false;
+		}
+		else
+		{
+			cin.ignore();
+			correct = true;
+		}
+	}
+}
+void inputValue(int &value)
+{
+	bool correct = false;
+	while (!correct)
+	{
+		cin >> value;
+		if (cin.fail()) //проверка на корректность ввода
+		{
+			cin.clear();
+			cin.ignore(255, '\n');
+			cout << "Введите цыфру!!!" << endl << endl;
+			correct = false;
+		}
+		else
+		{
+			cin.ignore();
+			correct = true;
+		}
+	}
 }

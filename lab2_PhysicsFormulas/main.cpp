@@ -1,140 +1,73 @@
 #include <iostream>
+#include <string>
 #include "functions.h"
 namespace std;
+using namespace std;
 
 int main()
 {
-    setlocale(LC_ALL, "rus");
     int formula_selection;
-    link: //������� � ����� ����� ��� ������������ ����� ��� �� ���������� ����������
-    Start_print ();
-	cin >> formula_selection;
-	//if (cin.fail()) cin.clear();
-		if (cin.fail()) //�������� �� ������������ �����
+	setlocale(LC_ALL, "rus");
+	string density = "Введите плотность в граммах на кубический метр";
+	string height = "Введите высоту столба жидкости в метрах";
+	string weight = "Введите массу в граммах ";
+	string speed0 = "Введите первичную скорость тела в метрах в секунду ";
+	string speed = "Введите конечную скорость тела в метрах в секунду ";
+	string speed1 = "Введите скорость тела в метрах в секунду ";
+	string time = "Введите время в секундах";
+	bool workProg = true;
+	while (workProg)
+	{
+		Start_print();
+		int formula_selection;
+		inputValue(formula_selection);
+		switch (formula_selection)
 		{
-			cin.clear();
-			cin.ignore();
-			cout << "������� �����!!!" << endl << endl;
-			goto link;
-		}
-    switch (formula_selection)
-    {
-    case 1:
-        cout << "�� �������\"�������� �� ������� ��������\"" << endl;
-		link1: //������� � ����� ����� ��� ������������ ����� ���������
-        cout << "������� ��������� � ����������� �� ���������� ����" << endl;
-        double p;
-        cin >> p;
-		if (cin.fail()) //�������� �� ������������ �����
-		{
-                cin.clear();
-                cin.ignore();
-				cout << "������� �����!!!" << endl << endl;
-				goto link1;
-		}
-		link2: //������� � ����� ����� ��� ������������ ����� ������ ��������
-        cout << "������� ������ ������ �������� � ������" << endl;
-        double h;
-        cin >> h;
-		if (cin.fail()) cin.clear();
-        if (cin.fail()) //�������� �� ������������ �����
-		{
-                cin.clear();
-                cin.ignore();
-				cout << "������� �����!!!" << endl << endl;
-				goto link2;
-		}
-        cout << "�������� �� ������� �������� = " << P(p, h) << " ��" << endl << endl;
-        goto link; //������������ � ������ �������
-        break;
-    case 2:
-        cout << "�� �������\"���� �������\"" << endl;
-		link3: //������� � ����� ����� ��� ������������ ����� �����
-        cout << "������� ����� � ����������� " << endl;
-        double m;
-        cin >> m;
-            if (cin.fail()) //�������� �� ������������ �����
+		case 1:
+			cout << "Вы выбрали\"Давление на глубине жидкости\"" << endl;
+			double p;
+			inputValue(p, density);
+			double h;
+			inputValue(h, height);
+			cout << "Давление на глубине жидкости = " << P(p, h) << " Па" << endl << endl;
+			break;
+		case 2:
+			cout << "Вы выбрали\"Сила тяжести\"" << endl;
+			double m;
+			inputValue(m, weight);
+			cout << "Сила тяжести = " << F(m) << " Н" << endl << endl;
+			break;
+		case 3:
+			cout << "Вы выбрали\"Ускорение\"" << endl;
+			double v0;
+			inputValue(v0, speed0);
+			double v;
+			inputValue(v, speed);
+			double t;
+			while (t > 0)
+				inputValue(t, time);
+			if (t <= 0)
 			{
-                cin.clear();
-                cin.ignore();
-				cout << "������� �����!!!" << endl << endl;
-				goto link3;
+				cout << "Время не может быть меньше или равно нулю!" << endl;
+				inputValue(t, time);
 			}
-        cout << "���� ������� = " << F(m) << " �" << endl << endl;
-        goto link; //������������ � ������ �������
-		break;
-	case 3:
-        cout << "�� �������\"���������\"" << endl;
-		link4: //������� � ����� ����� ��� ������������ ����� ��������� ��������
-        cout << "������� ��������� �������� ���� � ������ � ������� " << endl;
-        double v0;
-        cin >> v0;
-            if (cin.fail()) //�������� �� ������������ �����
-			{
-                cin.clear();
-                cin.ignore();
-				cout << "������� �����!!!" << endl << endl;
-				goto link4;
-			}
-			link5: //������� � ����� ����� ��� ������������ ������������� ��������
-		cout << "������� �������� �������� ���� � ������ � ������� " << endl;
-        double v;
-        cin >> v;
-            if (cin.fail()) //�������� �� ������������ �����
-			{
-                cin.clear();
-                cin.ignore();
-				cout << "������� �����!!!" << endl << endl;
-				goto link;
-			}
-			link6: //������� � ����� ����� ��� ������������ ����� �������
-		cout << "������� ����� � ��������" << endl;
-        double t;
-        cin >> t;
-            if (cin.fail()) //�������� �� ������������ �����
-			{
-                cin.clear();
-                cin.ignore();
-				cout << "������� �����!!!" << endl << endl;
-				goto link6;
-			}
-        cout << "��������� = " << a(v0, v, t) << " �/�2" << endl << endl;
-        goto link; //������������ � ������ �������
-        break;
-	case 4:
-		cout << "�� �������\"������������ ������� ����\"" << endl;
-		link7: //������� � ����� ����� ��� ������������ ����� �����
-		cout << "������� ����� � ����������� " << endl;
-		double m1;
-		cin >> m1;
-		if (cin.fail()) //�������� �� ������������ �����
-		{
-			cin.clear();
-			cin.ignore();
-			cout << "������� �����!!!" << endl << endl;
-			goto link7;
+			cout << "Ускорение = " << a(v0, v, t) << " м/с2" << endl << endl;
+			break;
+		case 4:
+			cout << "Вы выбрали\"Кинетическая энергия тела\"" << endl;
+			double m1;
+			inputValue(m1, weight);
+			double v1;
+			inputValue(v1, speed1);
+			cout << "Кинетическая энергия тела = " << Ek(m1, v1) << " Дж" << endl << endl;
+			break;
+		case 0:
+			workProg = false;
+			break; // завершаем работу
+		default:
+			cout << "Я не знаю этого числа" << endl;
+			break;
 		}
-		link8: //������� � ����� ����� ��� ������������ ����� ������ ��������
-		cout << "������� ������ ������ �������� h � ������" << endl;
-		double v1;
-		cin >> v1;
-		if (cin.fail()) cin.clear();
-		if (cin.fail()) //�������� �� ������������ �����
-		{
-			cin.clear();
-			cin.ignore();
-			cout << "������� �����!!!" << endl << endl;
-			goto link8;
-		}
-		cout << "������������ ������� ���� = " << Ek(m1,v1) << " ��" << endl << endl;
-		goto link; //������������ � ������ �������
-		break;
-    case 0:
-        break; // ��������� ������
-    default:
-        cout << "� �� ���� ����� �����" << endl;
-        goto link; //������������ � ������ �������
-        break;
-    }
-return 0;
+	}
+	return 0;
 }
