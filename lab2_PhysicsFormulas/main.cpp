@@ -1,12 +1,10 @@
 #include <iostream>
 #include <string>
 #include "functions.h"
-namespace std;
 using namespace std;
 
 int main()
 {
-    int formula_selection;
 	setlocale(LC_ALL, "rus");
 	string density = "Введите плотность в граммах на кубический метр";
 	string height = "Введите высоту столба жидкости в метрах";
@@ -44,12 +42,11 @@ int main()
 			double v;
 			inputValue(v, speed);
 			double t;
-			while (t > 0)
-				inputValue(t, time);
-			if (t <= 0)
+			inputValue(t, time);
+			while (!(t > 0))
 			{
-				cout << "Время не может быть меньше или равно нулю!" << endl;
 				inputValue(t, time);
+				cout << "Время не может быть меньше или равно нулю!" << endl;
 			}
 			cout << "Ускорение = " << a(v0, v, t) << " м/с2" << endl << endl;
 			break;
