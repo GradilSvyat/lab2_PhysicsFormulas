@@ -1,8 +1,12 @@
-#pragma once
+п»ї#pragma once
+#include <string>
 
-void Start_print();
-double P(double p, double h); //Расчёт формулы давления жидкости
-double F(double m); //Расчёт формулы силы тяжести
-double a(double v0, double v, double t); //Расчёт формулы ускорения
-double Ek(double m1, double v1); //Расчёт формулы кинетической энергии тела
+using namespace std;
 
+void Print_menu(const int formula_selection);
+void format(int color);
+void Pressure_fluid(); //Р Р°СЃС‡С‘С‚ С„РѕСЂРјСѓР»С‹ РґР°РІР»РµРЅРёСЏ Р¶РёРґРєРѕСЃС‚Рё
+void Force_gravity(); //Р Р°СЃС‡С‘С‚ С„РѕСЂРјСѓР»С‹ СЃРёР»С‹ С‚СЏР¶РµСЃС‚Рё
+void acceleration(); //Р Р°СЃС‡С‘С‚ С„РѕСЂРјСѓР»С‹ СѓСЃРєРѕСЂРµРЅРёСЏ
+void Eenergy_kinetic(); //Р Р°СЃС‡С‘С‚ С„РѕСЂРјСѓР»С‹ РєРёРЅРµС‚РёС‡РµСЃРєРѕР№ СЌРЅРµСЂРіРёРё С‚РµР»Р°
+void inputValue(double &value, const string str); //РїСЂРѕРІРµСЂРєР° РІРІРѕРґР° РІ С„РѕСЂРјСѓР»Рµ
