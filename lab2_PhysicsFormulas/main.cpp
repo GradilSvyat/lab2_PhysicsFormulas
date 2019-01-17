@@ -26,19 +26,19 @@ int main()
 			switch (formula_selection)
 			{
 			case 1:
-				P();
+				Pressure_fluid();
 				system("PAUSE");
 				break;
 			case 2:
-				F();
+				Force_gravity();
 				system("PAUSE");
 				break;
 			case 3:
-				a();
+				acceleration();
 				system("PAUSE");
 				break;
 			case 4:
-				Ek();
+				Eenergy_kinetic();
 				system("PAUSE");
 				break;
 			case 5:

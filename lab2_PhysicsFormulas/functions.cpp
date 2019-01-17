@@ -46,7 +46,7 @@ void Print_menu(const int formula_selection)
 		cout << start_menu[i] << endl;
 	}
 }
-void P() //Расчёт формулы давления жидкости
+void Pressure_fluid() //Расчёт формулы давления жидкости
 {
 	cout << "Вы выбрали\"Давление на глубине жидкости\"" << endl;
 	double p;
@@ -55,14 +55,14 @@ void P() //Расчёт формулы давления жидкости
 	inputValue(h, height);
 	cout << "Давление на глубине жидкости = " << G*p*h << " Па" << endl << endl;
 }
-void F() //Расчёт формулы силы тяжести
+void Force_gravity() //Расчёт формулы силы тяжести
 {
 	cout << "Вы выбрали\"Сила тяжести\"" << endl;
 	double m;
 	inputValue(m, weight);
 	cout << "Сила тяжести = " << m*G << " Н" << endl << endl;
 }
-void a() //Расчёт формулы ускорения
+void acceleration() //Расчёт формулы ускорения
 {
 	cout << "Вы выбрали\"Ускорение\"" << endl;
 	double v0;
@@ -79,7 +79,7 @@ void a() //Расчёт формулы ускорения
 	double dv = v - v0; //дельта скорости
 	cout << "Ускорение = " << dv / t << " м/с2" << endl << endl;
 }
-void Ek() //Расчёт формулы кинетической энергии тела
+void Eenergy_kinetic() //Расчёт формулы кинетической энергии тела
 {
 	cout << "Вы выбрали\"Кинетическая энергия тела\"" << endl;
 	double m1;
